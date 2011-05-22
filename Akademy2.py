@@ -27,10 +27,10 @@ WIDTH = 600
 HEIGHT = 600
 
 vertices = (GLfloat * (4*4))(
-         1.0, 1.0, 0.0, 1.0,
-         1.0,-1.0, 0.0, 1.0,
-        -1.0,-1.0, 0.0, 1.0,
-        -1.0, 1.0, 0.0, 1.0)
+    1.0, 1.0, 0.0, 1.0,
+    1.0,-1.0, 0.0, 1.0,
+    -1.0,-1.0, 0.0, 1.0,
+    -1.0, 1.0, 0.0, 1.0)
 
 #Matriz de rotación, esta al ser aplicada sobre un punto
 #lo rota 45 grados alrededor del eje X
@@ -54,28 +54,28 @@ def init_gl():
     glClearDepth(1.0);
 
 def resize_glscene(w,h):
-        glViewport(0,0,w,h);
+    glViewport(0,0,w,h);
 
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
 
-        gluPerspective(45.0, float(w)/float(h), 0.1, 100.0);
+    gluPerspective(45.0, float(w)/float(h), 0.1, 100.0);
 
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     
 def draw_scene(position):
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glLoadIdentity();
-        glTranslatef(0.0, 0.0, -6.0);
+    glLoadIdentity();
+    glTranslatef(0.0, 0.0, -6.0);
 
-        glVertexAttribPointer(position, 4, GL_FLOAT, 1, 0, vertices);
-        glEnableVertexAttribArray(position);
+    glVertexAttribPointer(position, 4, GL_FLOAT, 1, 0, vertices);
+    glEnableVertexAttribArray(position);
 
-        glDrawElements(GL_QUADS, len(faceIndex), GL_UNSIGNED_SHORT, faceIndex);
+    glDrawElements(GL_QUADS, len(faceIndex), GL_UNSIGNED_SHORT, faceIndex);
 
-        glDisableVertexAttribArray(position);
+    glDisableVertexAttribArray(position);
 
 
 def load_Shaders(vsFileName, fsFileName):
